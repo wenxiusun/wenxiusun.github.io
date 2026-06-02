@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wenxiu Sun's Homepage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333;
+      background: #fff;
+      letter-spacing: 0.01em;
+    }
+
+    a { color: #c36; text-decoration: none; }
+    a:hover { color: #336; text-decoration: none; }
+
+    /* Header / Nav */
+    header {
+      padding: 12px 40px;
+      background: #fff;
+    }
+    nav {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .site-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #333;
+      text-decoration: none;
+    }
+    .site-title:hover { text-decoration: none; color: #336; }
+
+    /* Main layout */
+    .page-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    /* Profile section */
+    .profile {
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #eee;
+    }
+    .profile-photo-placeholder {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: #d0d5dd;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: #888;
+    }
+    .profile-info h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #111;
+      letter-spacing: -0.02em;
+    }
+    .profile-info .title {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 4px;
+      font-weight: 400;
+    }
+    .profile-info .email {
+      font-size: 13px;
+      color: #777;
+      font-family: 'Inter', monospace;
+      letter-spacing: 0.02em;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 28px;
+    }
+    section h2 {
+      font-size: 19px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e0e0e0;
+      letter-spacing: 0.01em;
+    }
+
+    /* Bio */
+    .bio p {
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    /* News */
+    .news-list {
+      list-style: none;
+      font-size: 15px;
+    }
+    .news-list li {
+      padding: 2px 0 2px 16px;
+      position: relative;
+      color: #444;
+    }
+    .news-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #c36;
+      font-size: 12px;
+      top: 6px;
+    }
+
+    /* Press */
+    .press-list {
+      list-style: none;
+      font-size: 14px;
+    }
+    .press-list li {
+      padding: 3px 0;
+      border-bottom: 1px solid #f0f0f0;
+      color: #444;
+    }
+    .press-list li:last-child { border-bottom: none; }
+    .press-date {
+      color: #888;
+      font-size: 13px;
+      margin-right: 8px;
+    }
+
+    /* Publications */
+    .pub-list {
+      list-style: none;
+    }
+    .pub-item {
+      padding: 8px 0;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .pub-title {
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 4px;
+      font-size: 14.5px;
+    }
+    .pub-title a { color: #c36; }
+    .pub-title a:hover { color: #336; }
+    .pub-authors {
+      color: #555;
+      margin-bottom: 2px;
+    }
+    .pub-venue {
+      color: #888;
+      font-style: italic;
+      margin-bottom: 4px;
+    }
+    .pub-venue .venue-name { color: #0073aa; font-style: normal; font-weight: 500; }
+    .pub-note {
+      color: #c0392b;
+      font-weight: 500;
+      font-size: 13px;
+    }
+    .pub-links { margin-top: 4px; }
+    .pub-links a {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 13px;
+      color: #c36;
+      background: #fdf0f5;
+      padding: 1px 8px;
+      border-radius: 3px;
+    }
+    .pub-links a:hover { background: #f7d6e4; color: #336; text-decoration: none; }
+
+    /* Awards */
+    .award-list {
+      list-style: none;
+      font-size: 15px;
+    }
+    .award-list li {
+      padding: 5px 0 5px 16px;
+      position: relative;
+    }
+    .award-list li:last-child { }
+    .award-list li::before {
+      content: "★";
+      position: absolute;
+      left: 0;
+      color: #e6a817;
+      font-size: 12px;
+      top: 7px;
+    }
+
+    .hero-banner {
+      width: 100%;
+      margin-bottom: 32px;
+      line-height: 0;
+    }
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    footer {      text-align: center;
+      font-size: 13px;
+      color: #999;
+      padding: 24px 40px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    @media (max-width: 600px) {
+      .page-wrap { padding: 24px 20px 60px; }
+      header { padding: 0 20px; }
+      .profile { flex-direction: column; align-items: center; text-align: center; }
+      .profile-photo, .profile-photo-placeholder { width: 110px; height: 110px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="site-title" href="#">Homepage</a>
+  </nav>
+</header>
+
+<div class="page-wrap">
+
+<div class="hero-banner"><img src="assets/images/banner.png" alt=""></div>
+
+  <!-- Profile -->
+  <div class="profile">
+    <div class="profile-info">
+      <h1>Wenxiu Sun (孫文秀, Ph.D.)</h1>
+      <p class="title">Research Director at <a href="https://www.sensetime.com/">SenseTime Group Limited</a></p>
+      <p class="email">Email: sunwx at sensetime dot com</p>
+    </div>
+  </div>
+
+  <!-- Biography -->
+  <section class="bio">
+    <h2>Biography</h2>
+    <p>I received the Ph.D. degree from the Electronic and Computer Engineering,
+      <a href="https://hkust.edu.hk/home">The Hong Kong University of Science and Technology (HKUST)</a>
+      in 2014, and B.Eng. degree from the School of Electronic &amp; Electrical Engineering,
+      <a href="https://www.nju.edu.cn/en/main.psp">Nanjing University</a>
+      in 2009. During my Ph.D. study from Sep. 2009 to Mar. 2014, I was supervised by Prof. Oscar C. Au.
+      From Sep. to Dec. 2012, I visited
+      <a href="http://www.nii.ac.jp/">National Institute of Informatics (NII)</a>
+      as a research intern under the supervision of
+      <a href="https://www.eecs.yorku.ca/~genec/index.html">Prof. Gene Cheung</a>.</p>
+    <p>I'm interested in large language models and computer vision. In particular, I worked on depth sensing, segmentation,
+      and image processing to solve real-world problems. Currently, I'm focusing on LLM evaluation and development
+      to advance the progress of the next AGI.</p>
+    <p>I am currently working at SenseTime as a Research Director and recruiting self-motivated researchers and engineers
+      who are eager and patient to make contributions to the world. If interested, please drop your CV to my email.</p>
+  </section>
+
+  <!-- News -->
+  <section>
+    <h2>News</h2>
+    <ul class="news-list">
+      <li>We are hosting an ECCV 2022 workshop, details will be available soon!</li>
+      <li>2 papers accepted to ICCV 2021</li>
+      <li>2 papers accepted to CVPR 2021</li>
+      <li>1 paper accepted to ICLR 2021</li>
+      <li>1 paper accepted to TPAMI 2020</li>
+      <li>2 papers accepted to ECCV 2020</li>
+      <li>No. 1 in <a href="https://data.vision.ee.ethz.ch/cvl/aim20/">ECCV AIM 2020</a> Video Interpolation Challenge</li>
+      <li>1 paper accepted to TIP 2020</li>
+      <li>1 paper accepted to ICML 2020</li>
+      <li>2 papers accepted to CVPR 2020</li>
+      <li>No. 1 in <a href="http://www.vision.ee.ethz.ch/aim19/">ICCV AIM 2019</a> Video Interpolation Challenge</li>
+      <li>1 paper accepted as spotlight to NeurIPS 2019</li>
+      <li>2 papers accepted to ICCV 2019</li>
+      <li>3 papers accepted to CVPR 2019</li>
+    </ul>
+  </section>
+
+  <!-- Press -->
+  <section>
+    <h2>Press</h2>
+    <ul class="press-list">
+      <li><span class="press-date">2019.12.11</span>
+        <a href="https://mp.weixin.qq.com/s/7IMTVYu7Z3XJpyv4SLKPmA">GiveMeFive丨商汤五年，从0到N的快速进击</a></li>
+      <li><span class="press-date">2023.09.26</span>
+        contributed in Video Frame Interpolation —
+        <a href="https://www.sohu.com/a/723683383_99963310">《孤注一掷》火爆有原因，除了剧情好，还有神秘AI力量</a></li>
+      <li><span class="press-date">2023.10.31</span>
+        contributed in RGB-D Fusion —
+        <a href="https://news.mydrivers.com/1/942/942873.htm">骁龙8 Gen 3 正式发布, 慧鲤携手高通为手机注入AI 超能力</a></li>
+      <li><span class="press-date">2023.11.08</span>
+        contributed in Video Frame Interpolation —
+        <a href="https://www.xiaoyuzhoufm.com/episode/654bbb2063f913837c8c5ebc">编码人声：从黑白电视到《孤注一掷》，聊聊冰山下的高清技术</a></li>
+      <li><span class="press-date">2023.11.10</span>
+        contributed in Video Frame Interpolation —
+        <a href="https://mp.weixin.qq.com/s/rkH5XzwpXv8UQtkF4ZUzdg">《流浪地球》3定档，电影工业化3.0时代，商汤AI有更多"戏份"</a></li>
+      <li><span class="press-date">2024.09.23</span>
+        China Daily Interview "Making the most of AI: Insights from Wenxiu" —
+        <a href="https://www.youtube.com/watch?v=LjQXS4ry8_Q">Youtube Link</a> /
+        <a href="https://www.chinadailyhk.com/hk/video?code=girl_city&play_id=593638">China Daily Link</a></li>
+    </ul>
+  </section>
+
+  <!-- Publications -->
+  <section>
+    <h2>Selected Publications</h2>
+    <ul class="pub-list">
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Wang_Dual-Camera_Super-Resolution_With_Aligned_Attention_Modules_ICCV_2021_paper.pdf">Dual-Camera Super-Resolution with Aligned Attention Modules</a></div>
+        <div class="pub-authors">Tengfei Wang, Jiaxin Xie, Wenxiu Sun, Qiong Yan, Qifeng Chen</div>
+        <div class="pub-venue">International Conference on Computer Vision <span class="venue-name">(ICCV 2021)</span> — <span class="pub-note">Oral</span></div>
+        <div class="pub-links"><a href="https://github.com/Tengfei-Wang/DCSR">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/2109.02974.pdf">FuseFormer: Fusing Fine-Grained Information in Transformers for Video Inpainting</a></div>
+        <div class="pub-authors">Rui Liu, Hanming Deng, Yangyi Huang, Xiaoyu Shi, Lewei Lu, Wenxiu Sun, Xiaogang Wang, Jifeng Dai, Hongsheng Li</div>
+        <div class="pub-venue">International Conference on Computer Vision <span class="venue-name">(ICCV 2021)</span></div>
+        <div class="pub-links"><a href="https://github.com/ruiliu-ai/FuseFormer">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Siyao_Deep_Animation_Video_Interpolation_in_the_Wild_CVPR_2021_paper.pdf">Deep Animation Video Interpolation in the Wild</a></div>
+        <div class="pub-authors">Li Siyao, Shiyu Zhao, Weijiang Yu, Wenxiu Sun, Dimitris Metaxas, Chen Change Loy, Ziwei Liu</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition <span class="venue-name">(CVPR 2021)</span></div>
+        <div class="pub-links"><a href="https://github.com/lisiyao21/AnimeInterp">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Xie_Efficient_Regional_Memory_Network_for_Video_Object_Segmentation_CVPR_2021_paper.pdf">Efficient Regional Memory Network for Video Object Segmentation</a></div>
+        <div class="pub-authors">Haozhe Xie, Hongxun Yao, Shangchen Zhou, Shengping Zhang, Wenxiu Sun</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition <span class="venue-name">(CVPR 2021)</span></div>
+        <div class="pub-links"><a href="https://github.com/hzxie/RMNet">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://openaccess.thecvf.com/content/CVPR2021W/WAD/papers/He_Semi-Synthesis_A_Fast_Way_To_Produce_Effective_Datasets_for_Stereo_CVPRW_2021_paper.pdf">Semi-synthesis: A fast way to produce effective datasets for stereo matching</a></div>
+        <div class="pub-authors">Ju He, Enyu Zhou, Liusheng Sun, Fei Lei, Chenyang Liu, Wenxiu Sun</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition — Workshop <span class="venue-name">(CVPRW 2021)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch</div>
+        <div class="pub-authors">Aojun Zhou, Yukun Ma, Junnan Zhu, Jianbo Liu, Zhijie Zhang, Kun Yuan, Wenxiu Sun, Hongsheng Li</div>
+        <div class="pub-venue">International Conference on Learning Representations <span class="venue-name">(ICLR 2021)</span></div>
+        <div class="pub-links">
+          <a href="https://openreview.net/forum?id=K9bw7vqp_s">[open review]</a>
+          <a href="https://iclr.cc/virtual/2021/poster/3174">[presentation]</a>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/2102.01579.pdf">Exploiting Raw Images for Real-Scene Super-Resolution</a></div>
+        <div class="pub-authors">Xiangyu Xu, Yongrui Ma, Wenxiu Sun, Ming-Hsuan Yang</div>
+        <div class="pub-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence <span class="venue-name">(T-PAMI, 2020)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/2006.03761.pdf">GRNet: Gridding Residual Network for Dense Point Cloud Completion</a></div>
+        <div class="pub-authors">Haozhe Xie, Hongxun Yao, Shangchen Zhou, Jiageng Mao, Shengping Zhang, Wenxiu Sun</div>
+        <div class="pub-venue">European Conference on Computer Vision <span class="venue-name">(ECCV 2020)</span></div>
+        <div class="pub-links"><a href="https://github.com/hzxie/GRNet">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123690715.pdf">Deep Surface Normal Estimation on the 2-Sphere with Confidence Guided Semantic Attention</a></div>
+        <div class="pub-authors">Quewei Li, Jie Guo, Yang Fei, Qinyu Tang, Wenxiu Sun, Jin Zeng, Yanwen Guo</div>
+        <div class="pub-venue">European Conference on Computer Vision <span class="venue-name">(ECCV 2020)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Enhanced Quadratic Video Interpolation</div>
+        <div class="pub-authors">Yihao Liu, Liangbin Xie, Li Siyao, Wenxiu Sun, Yu Qiao, Chao Dong</div>
+        <div class="pub-venue">European Conference on Computer Vision — AIM2020 Workshop <span class="venue-name">(ECCV 2020)</span> — <span class="pub-note">No. 1 in <a href="https://data.vision.ee.ethz.ch/cvl/aim20/">AIM2020</a> VTSR Challenge</span></div>
+        <div class="pub-links"><a href="https://github.com/lyh-18/EQVI">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9110760">Learning Spatial and Spatio-Temporal Pixel Aggregations for Image and Video Denoising</a></div>
+        <div class="pub-authors">Xiangyu Xu, Muchen Li, Wenxiu Sun, Ming-Hsuan Yang</div>
+        <div class="pub-venue">IEEE Transactions on Image Processing, VOL. 29, 2020 <span class="venue-name">(TIP 2020)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="http://proceedings.mlr.press/v119/xu20f/xu20f.pdf">Learning Factorized Weight Matrix for Joint Filtering</a></div>
+        <div class="pub-authors">Xiangyu Xu, Yongrui Ma, Wenxiu Sun</div>
+        <div class="pub-venue">Proceedings of the 37th International Conference on Machine Learning <span class="venue-name">(ICML 2020)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Pix2Vox++: Multi-scale Context-aware 3D Object Reconstruction from Single and Multiple Images</div>
+        <div class="pub-authors">Haozhe Xie, Hongxun Yao, Shengping Zhang, Shangchen Zhou, Wenxiu Sun</div>
+        <div class="pub-venue">International Journal of Computer Vision <span class="venue-name">(IJCV 2020)</span></div>
+        <div class="pub-links"><a href="https://github.com/hzxie/Pix2Vox">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/2008.05157.pdf">Towards Geometry Guided Neural Relighting with Flash Photography</a></div>
+        <div class="pub-authors">Di Qiu, Jin Zeng, Zhanghan Ke, Wenxiu Sun, Chengxi Yang</div>
+        <div class="pub-venue">International Conference on 3D Vision <span class="venue-name">(3DV 2020)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_StereoGAN_Bridging_Synthetic-to-Real_Domain_Gap_by_Joint_Optimization_of_Domain_CVPR_2020_paper.pdf">StereoGAN: Bridging Synthetic-to-Real Domain Gap by Joint Optimization of Domain Translation and Stereo Matching</a></div>
+        <div class="pub-authors">Rui Liu, Chengxi Yang, Wenxiu Sun, Xiaogang Wang, Hongsheng Li</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition <span class="venue-name">(CVPR 2020)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/2003.12789.pdf">Polarized Reflection Removal with Perfect Alignment in the Wild</a></div>
+        <div class="pub-authors">Chenyang Lei, Xuhua Huang, Mengdi Zhang, Qiong Yan, Wenxiu Sun, Qifeng Chen</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition <span class="venue-name">(CVPR 2020)</span></div>
+        <div class="pub-links"><a href="https://github.com/ChenyangLEI/polarization-reflection-removal">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Quadratic Video Interpolation</div>
+        <div class="pub-authors">Xiangyu Xu, Li Si-Yao, Wenxiu Sun, Qian Yin, Ming-Hsuan Yang</div>
+        <div class="pub-venue">Advances in Neural Information Processing Systems <span class="venue-name">(NeurIPS 2019)</span> — <span class="pub-note">Spotlight</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Quadratic Video Interpolation for VTSR Challenge</div>
+        <div class="pub-authors">Li Si-Yao, Ze Pan, Xiangyu Xu, Wenxiu Sun</div>
+        <div class="pub-venue">International Conference on Computer Vision — Workshop on Advances in Image Manipulation <span class="venue-name">(ICCVW 2019)</span> — <span class="pub-note">No. 1 in <a href="http://www.vision.ee.ethz.ch/aim19/">ICCV AIM 2019</a> Video Interpolation Challenge</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Qiu_Deep_End-to-End_Alignment_and_Refinement_for_Time-of-Flight_RGB-D_Module_ICCV_2019_paper.pdf">Deep End-to-End Alignment and Refinement for Time-of-Flight RGB-D Module</a></div>
+        <div class="pub-authors">Di Qiu, Jiahao Pang, Wenxiu Sun, Chengxi Yang</div>
+        <div class="pub-venue">International Conference on Computer Vision <span class="venue-name">(ICCV 2019)</span></div>
+        <div class="pub-links"><a href="https://github.com/sylqiu/tof_rgbd_processing">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Towards Real Scene Super-Resolution with Raw Images</div>
+        <div class="pub-authors">Xiangyu Xu, Yongrui Ma, Wenxiu Sun</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition <span class="venue-name">(CVPR 2019)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="http://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Zeng_Deep_Graph_Laplacian_Regularization_for_Robust_Denoising_of_Real_Images_CVPRW_2019_paper.pdf">Deep Surface Normal Estimation with Hierarchical RGB-D Fusion</a></div>
+        <div class="pub-authors">Jin Zeng, Yanfeng Tong, Yunmu Huang, Qiong Yan, Wenxiu Sun, Jing Chen, Yongtian Wan</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition <span class="venue-name">(CVPR 2019)</span></div>
+        <div class="pub-links"><a href="https://github.com/jzengust/RGBD2Normal">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/1904.06903.pdf">Learning Deformable Kernels for Image and Video Denoising</a></div>
+        <div class="pub-authors">Xiangyu Xu, Muchen Li, Wenxiu Sun</div>
+        <div class="pub-venue">arXiv preprint arXiv:1904.06903 (2019)</div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/1809.09763.pdf">DSR: Direct Self-rectification for Uncalibrated Dual-lens Cameras</a></div>
+        <div class="pub-authors">Ruichao Xiao, Wenxiu Sun, Jiahao Pang, Qiong Yan, Jimmy Ren</div>
+        <div class="pub-venue">International Conference on 3D Vision <span class="venue-name">(3DV 2018)</span></div>
+        <div class="pub-links"><a href="https://github.com/garroud/self-rectification">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="http://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Zeng_Deep_Graph_Laplacian_Regularization_for_Robust_Denoising_of_Real_Images_CVPRW_2019_paper.pdf">Deep Graph Laplacian Regularization for Robust Denoising of Real Images</a></div>
+        <div class="pub-authors">Jin Zeng, Jiahao Pang, Wenxiu Sun, Gene Cheung</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition — Workshop <span class="venue-name">(CVPRW 2019)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://www.ijcai.org/proceedings/2018/0387.pdf">Convolutional Memory Blocks for Depth Data Representation Learning</a></div>
+        <div class="pub-authors">Keze Wang, Liang Lin, Chuangjie Ren, Wei Zhang, Wenxiu Sun</div>
+        <div class="pub-venue">The 27th International Joint Conference on Artificial Intelligence <span class="venue-name">(IJCAI 2018)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/YuKang_Gan_Monocular_Depth_Estimation_ECCV_2018_paper.pdf">Monocular Depth Estimation with Affinity, Vertical Pooling, and Label Enhancement</a></div>
+        <div class="pub-authors">Yukang Gan, Xiangyu Xu, Wenxiu Sun, Liang Lin</div>
+        <div class="pub-venue">European Conference on Computer Vision <span class="venue-name">(ECCV 2018)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Pang_Zoom_and_Learn_CVPR_2018_paper.pdf">Zoom and Learn: Generalizing Deep Stereo Matching to Novel Domains</a></div>
+        <div class="pub-authors">Jiahao Pang, Wenxiu Sun, Chengxi Yang, Jimmy Ren, Ruichao Xiao, Jin Zeng, Liang Lin</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition <span class="venue-name">(CVPR 2018)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="http://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w17/Pang_Cascade_Residual_Learning_ICCV_2017_paper.pdf">Cascade Residual Learning: A Two-stage Convolutional Neural Network for Stereo Matching</a></div>
+        <div class="pub-authors">Jiahao Pang, Wenxiu Sun, Jimmy SJ Ren, Chengxi Yang, Qiong Yan</div>
+        <div class="pub-venue">International Conference on Computer Vision <span class="venue-name">(ICCV 2017)</span> — <span class="pub-note">No. 1 in <a href="http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo">KITTI2015</a> from Mar 2016 – Sep 2016</span></div>
+        <div class="pub-links"><a href="https://github.com/Artifineuro/crl">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Luo_Single_View_Stereo_CVPR_2018_paper.pdf">Single View Stereo Matching</a></div>
+        <div class="pub-authors">Yue Luo, Jimmy S. Ren, Mude Lin, Jiahao Pang, Wenxiu Sun, Hongsheng Li, Liang Lin</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition <span class="venue-name">(CVPR 2018)</span> — <span class="pub-note">Spotlight</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Luo_LSTM_Pose_Machines_CVPR_2018_paper.pdf">LSTM Pose Machines</a></div>
+        <div class="pub-authors">Yue Luo, Jimmy S. Ren, Zhouxia Wang, Wenxiu Sun, Jinshan Pan, Jianbo Liu, Jiahao Pang, Liang Lin</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition <span class="venue-name">(CVPR 2018)</span></div>
+        <div class="pub-links"><a href="https://github.com/lawy623/LSTM_Pose_Machines">[code]</a></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://zpascal.net/cvpr2017/Ren_Accurate_Single_Stage_CVPR_2017_paper.pdf">Accurate Single Stage Detector Using Recurrent Rolling Convolution</a></div>
+        <div class="pub-authors">Jimmy S. Ren, Xiaohao Chen, Jianbo Liu, Wenxiu Sun, Jiahao Pang, Qiong Yan, Yu-Wing Tai, Li Xu</div>
+        <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition <span class="venue-name">(CVPR 2017)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/1602.04364.pdf">Look, Listen and Learn – A Multimodal LSTM for Speaker Identification</a></div>
+        <div class="pub-authors">Jimmy S. Ren, Yongtao Hu, Yu-Wing Tai, Chuan Wang, Li Xu, Wenxiu Sun, Qiong Yan</div>
+        <div class="pub-venue">The 30th AAAI Conference on Artificial Intelligence <span class="venue-name">(AAAI 2016)</span> — <span class="pub-note">Oral</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title"><a href="https://papers.nips.cc/paper/5774-shepard-convolutional-neural-networks.pdf">Shepard Convolutional Neural Networks</a></div>
+        <div class="pub-authors">Jimmy S. Ren, Li Xu, Qiong Yan, Wenxiu Sun</div>
+        <div class="pub-venue">Advances in Neural Information Processing Systems <span class="venue-name">(NeurIPS 2015)</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Seamless View Synthesis through Texture Optimization</div>
+        <div class="pub-authors">Wenxiu Sun, Oscar C. Au, Lingfeng Xu, Yujun Li, Wei Hu</div>
+        <div class="pub-venue">IEEE Trans. Image Processing, vol 23, no. 1, 2014 <span class="venue-name">(TIP 2014)</span></div>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- Awards -->
+  <section>
+    <h2>Awards</h2>
+    <ul class="award-list">
+      <li>SenseTime Award, 2019</li>
+      <li>No. 1 in <a href="https://data.vision.ee.ethz.ch/cvl/aim20/">AIM 2020</a> Video Interpolation Challenge</li>
+      <li>No. 1 in <a href="http://www.vision.ee.ethz.ch/aim19/">AIM 2019</a> Video Interpolation Challenge</li>
+      <li>No. 1 in <a href="http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo">KITTI2015</a> from Mar 2016 – Sep 2016</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  Updated: Oct 08, 2024
+</footer>
+
+</body>
+</html>
